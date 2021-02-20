@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import path from 'path';
 
-import indexRouter from './routes/index.js';
+import { indexRouter, authorsRouter } from './routes/allRoutes.js';
 
 const app = express();
 const __dirname = path.resolve();
@@ -24,5 +24,6 @@ app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.static('public'));
 app.use('/', indexRouter);
+app.use('/authors', authorsRouter);
 
 app.listen(process.env.PORT || 3000);
