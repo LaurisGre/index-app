@@ -2,6 +2,7 @@ import express from 'express';
 import expressLayouts from 'express-ejs-layouts';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 import path from 'path';
 
 import { indexRouter, authorsRouter } from './routes/allRoutes.js';
@@ -20,6 +21,8 @@ db.once('open', () => console.log('Connected to Mongoose'));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
+
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 app.use(expressLayouts);
 app.use(express.static('public'));
