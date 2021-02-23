@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import path from 'path';
 
-import { indexRouter, authorsRouter } from './routes/allRoutes.js';
+import { indexRouter, authorsRouter, booksRouter } from './routes/allRoutes.js';
 
 const app = express();
 const __dirname = path.resolve();
@@ -28,5 +28,6 @@ app.use(expressLayouts);
 app.use(express.static('public'));
 app.use('/', indexRouter);
 app.use('/authors', authorsRouter);
+app.use('/books', booksRouter);
 
 app.listen(process.env.PORT || 3000);
